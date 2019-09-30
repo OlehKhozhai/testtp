@@ -24,7 +24,7 @@ export interface IUpdateItemAction {
 
 export interface IDeleteItemAction {
   type: typeof DELETE_TEST_ITEM;
-  payload: number;
+  meta: number;
 }
 
 export type ITestItemActions =

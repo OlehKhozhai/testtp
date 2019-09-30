@@ -12,24 +12,22 @@ const initialState: ITestItemsList = {
 
 export const testReducer = (
   state = initialState,
-  { type, payload }: ITestItemActions
+  action: ITestItemActions
 ) => {
-  switch (type) {
+  switch (action.type) {
     case ADD_TEST_ITEM:
       return {
-        data: [...state.data, payload]
+        data: [...state.data, action.payload]
       };
 
-    // case UPDATE_TEST_ITEM:
-    //   return {
-    //     ...state
-    //     data: state.data.map(item => (item.id !== payload.id ? payload : item))
-    //   };
+    case UPDATE_TEST_ITEM:
+      return {
+        data: state.data.map(item => (item.id !== action.payload.id ? action.payload : item))
+      };
 
     case DELETE_TEST_ITEM:
       return {
-        ...state,
-        data: state.data.filter(({ id }) => id !== payload)
+        data: state.data.filter(({ id }) => id !== action.meta)
       };
 
     default:

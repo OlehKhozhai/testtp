@@ -8,8 +8,7 @@ const rootReducer = combineReducers({
   test: testReducer
 });
 
-const middlewares = [thunk];
-const enhancer = applyMiddleware(...middlewares);
+const enhancer = applyMiddleware(thunk);
 
 export type IAppStore = ReturnType<typeof rootReducer>;
 
